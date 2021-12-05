@@ -1,0 +1,58 @@
+.title {
+  max-width: 1320px;
+  height: 205px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+
+  #search {
+    position: relative;
+    width: 257px;
+    height: 40px;
+    border: 1xp solid red;
+  }
+
+  #title__fcontent {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+      position: relative;
+      width: 257px;
+      height: 40px;
+      border: 1px solid $border;
+      padding: 8px 8px 8px;
+      font: normal 450 14px/24px "Roboto";
+      border-radius: 4px;
+    }
+
+    mat-icon {
+      position: absolute;
+      right: 11.95px;
+      bottom: 11.94px;
+      top: 8px;
+      width: 17.05px;
+      height: 17.05px;
+      color: $opacityblack;
+    }
+  }
+
+  h6 {
+    font: normal 700 34px/44px "Roboto";
+  }
+
+  p {
+    font: normal 400 22px/44px "Roboto";
+    width: 224px;
+  }
+
+  h6,
+  p {
+    color: $black;
+  }
+}

@@ -1,0 +1,36 @@
+.content {
+  max-width: 1320px;
+  height: auto;
+  margin: 0 auto;
+
+  .containerContent {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-bottom: 1px solid $border;
+    margin-bottom: 18px;
+
+    #image {
+      width: 98px;
+      height: 96px;
+      border: 1px solid $innerborder;
+      margin-right: 17px;
+      margin-bottom: 18px;
+    }
+  }
+
+  #textContent {
+    width: 815px;
+    height: 81px;
+
+    p:first-child {
+      font: normal 700 16px/24px "Roboto";
+      color: $black;
+    }
+
+    p:last-child {
+      font: normal 500 14px/24px "Roboto";
+      color: $innerborder;
+    }
+  }
+}

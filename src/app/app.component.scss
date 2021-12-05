@@ -1,0 +1,50 @@
+@import "../styles/variables.scss";
+@import "../styles/header.scss";
+@import "../styles/TitleBlock.scss";
+@import "../styles/DisplayContent.scss";
+@import "../styles/pagination.scss";
+@import "../styles/responsive.scss";
+
+//Main
+.main {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+//------------------------------------------------------------
+
+// Item Information
+
+#item_information {
+  max-width: 1320px;
+  height: 50px;
+  margin: 0 auto;
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  transform: translateY(-40px);
+
+  p,
+  ng-template {
+    padding-left: 3px;
+  }
+}
+//------------------------------------------------------------
+
+// Footer
+
+.footer {
+  max-width: 1440px;
+  height: 31px;
+  margin: 0 auto;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $pblack;
+}
+
+//------------------------------------------------------------
+
