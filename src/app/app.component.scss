@@ -13,6 +13,74 @@
 }
 //------------------------------------------------------------
 
+// Theme Button
+.switch__theme {
+  margin: 30px auto;
+  width: 120px;
+  position: absolute;
+  padding: 0px 0px 0px 5px;
+  animation: opacity 0.2s ease-in;
+  animation-fill-mode: both;
+  animation-delay: 0.3s;
+}
+
+.switch {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+
+  & + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+  }
+}
+
+.theme--shadow + label {
+  padding: 2px;
+  width: 60px;
+  height: 30px;
+  background-color: #dddddd;
+  border-radius: 60px;
+}
+
+.theme--shadow + label:before,
+.theme--shadow + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+
+.theme--shadow + label:before {
+  right: 1px;
+  background-color: #f1f1f1;
+  border-radius: 60px;
+  transition: all 0.4s;
+}
+
+.theme--shadow + label:after {
+  width: 32px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+.theme--shadow:checked + label:before {
+  background-color: $orange;
+}
+
+.theme--shadow:checked + label:after {
+  transform: translateX(30px);
+}
+
+//------------------------------------------------------------
+
 // Item Information
 
 #item_information {
@@ -25,6 +93,10 @@
   align-items: center;
   background-color: transparent;
   transform: translateY(-40px);
+
+  &.darkmode {
+    color: $textw-darkMode;
+  }
 
   p,
   ng-template {
@@ -48,3 +120,11 @@
 
 //------------------------------------------------------------
 
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

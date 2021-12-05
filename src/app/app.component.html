@@ -1,4 +1,25 @@
 <div class="main">
+  <div class="switch__theme">
+    <input
+      id="switch-theme"
+      class="switch theme--shadow"
+      type="checkbox"
+      (click)="toggleTheme()"
+    />
+    <label for="switch-theme"></label>
+    <p
+      id="pDarkLight"
+      style="
+        text-align: left;
+        margin-top: 3px;
+        margin-left: 5px;
+        color: #00000099;
+        font-weight: 700;
+      "
+    >
+      Dark
+    </p>
+  </div>
   <div class="header">
     <img src="../assets/logo.svg" alt="Advise" />
     <div id="user">
@@ -8,55 +29,133 @@
   </div>
   <div class="title">
     <div id="title__fcontent">
-      <h6>Fase teste prático Front_end</h6>
+      <h6 id="title_text">Fase teste prático Front_end</h6>
       <form>
         <div id="search">
-          <input id="input-control" type="text" placeholder="Buscar" required [(ngModel)]="searchString" class="form-control" name="searchString">
+          <input
+            id="input-control"
+            type="text"
+            placeholder="Buscar"
+            required
+            [(ngModel)]="searchString"
+            class="form-control"
+            name="searchString"
+          />
           <mat-icon>search</mat-icon>
         </div>
       </form>
     </div>
     <div id="title__search">
-      <p>pokebusca</p>
+      <p id="pokesearch_text">pokebusca</p>
     </div>
   </div>
   <div id="item_information">
-    <p *ngIf="(pokemons|filter:searchString).length < itensinpage ;else elseBlock">Exibindo {{(pokemons|filter:searchString).length}} de {{this.pokemons.length}} itens</p>
-    <ng-template #elseBlock>Exibindo {{itensinpage}} de {{this.pokemons.length}} itens</ng-template>
+    <p
+      *ngIf="
+        (pokemons | filter: searchString).length < itensinpage;
+        else elseBlock
+      "
+    >
+      Exibindo {{ (pokemons | filter: searchString).length }} de
+      {{ this.pokemons.length }} itens
+    </p>
+    <ng-template #elseBlock
+      >Exibindo {{ itensinpage }} de
+      {{ this.pokemons.length }} itens</ng-template
+    >
   </div>
   <div class="content" id="contentarea">
-    <div *ngFor="let pokemon of pokemons |filter:searchString | paginate: {itemsPerPage: itensinpage,currentPage: page, totalItems: totalitens}"  class="containerContent" >
+    <div
+      *ngFor="
+        let pokemon of pokemons
+          | filter: searchString
+          | paginate
+            : {
+                itemsPerPage: itensinpage,
+                currentPage: page,
+                totalItems: totalitens
+              }
+      "
+      class="containerContent"
+      id="container_content"
+    >
       <div id="image">
-        <img src="{{'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+pokemon.url.split('/')[6] +'.png'}}" alt="{{pokemon.name}}" />
+        <img
+          src="{{
+            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
+              pokemon.url.split('/')[6] +
+              '.png'
+          }}"
+          alt="{{ pokemon.name }}"
+        />
       </div>
-      <div #showPokemon >
+      <div #showPokemon>
         <div id="textContent">
-          <p id="pokemonName">{{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}}#{{pokemon.url.split('/')[6]}}</p>
-          <p>Características do pokemon dolor sit amet, consectetur adipiscing elit. In ultricies nunc at odio tempor tincidunt. Sed sit amet dolor velit. Donec convallis tellus ut porta molestie. Suspendisse condimentum et dui in aliquam.</p>
+          <p id="pokemonName" class="pName">
+            {{
+              pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+            }}#{{ pokemon.url.split("/")[6] }}
+          </p>
+          <p id="pokemonDescription" class="pDesc">
+            Características do pokemon dolor sit amet, consectetur adipiscing
+            elit. In ultricies nunc at odio tempor tincidunt. Sed sit amet dolor
+            velit. Donec convallis tellus ut porta molestie. Suspendisse
+            condimentum et dui in aliquam.
+          </p>
         </div>
       </div>
     </div>
-    <div class="pag" *ngIf="(pokemons|filter:searchString).length >= 20 ;else elsePagination">
+    <div
+      class="pag"
+      *ngIf="
+        (pokemons | filter: searchString).length >= 20;
+        else elsePagination
+      "
+    >
       <pagination-template
         #api="paginationApi"
         class="custom-page-controls"
         (pageChange)="onTableDataChange($event)"
-        >
-        <div class="page-of-pages">
-          <p>{{api.getCurrent()}} de 56 páginas</p>
+      >
+        <div class="page-of-pages" id="pages">
+          <p>{{ api.getCurrent() }} de 56 páginas</p>
         </div>
-      <div class="set-page" [class.disabled]="api.isFirstPage()">
-        <a (click)="api.setCurrent(1)"><mat-icon>first_page</mat-icon></a>
-      </div>
-      <div class="pagination-previus" [class.disabled]="api.isFirstPage()">
-        <a (click)="api.previous()"><mat-icon>arrow_back_ios</mat-icon></a>
-      </div>
-      <div class="pagination-next" [class.disabled]="api.isLastPage()">
-        <a (click)="api.next()"><mat-icon>arrow_forward_ios</mat-icon></a>
-      </div>
-      <div class="set-page" [class.disabled]="api.isFirstPage()">
-        <a (click)="api.setCurrent(api.getLastPage())"><mat-icon>last_page</mat-icon></a>
-      </div>
+        <div
+          class="set-page"
+          [class.disabled]="api.isFirstPage()"
+          [ngClass]="api.isFirstPage() ? 'disabled' : 'enabled'"
+        >
+          <a (click)="api.setCurrent(1)"
+            ><mat-icon id="setfirstPageIcon">first_page</mat-icon></a
+          >
+        </div>
+        <div
+          class="pagination-previus"
+          [class.disabled]="api.isFirstPage()"
+          [ngClass]="api.isFirstPage() ? 'disabled' : 'enabled'"
+        >
+          <a (click)="api.previous()"
+            ><mat-icon id="backIcon">arrow_back_ios</mat-icon></a
+          >
+        </div>
+        <div
+          class="pagination-next"
+          [class.disabled]="api.isLastPage()"
+          [ngClass]="api.isLastPage() ? 'disabled' : 'enabled'"
+        >
+          <a (click)="api.next()"
+            ><mat-icon id="nextIcon">arrow_forward_ios</mat-icon></a
+          >
+        </div>
+        <div
+          class="set-page"
+          [class.disabled]="api.isLastPage()"
+          [ngClass]="api.isLastPage() ? 'disabled' : 'enabled'"
+        >
+          <a (click)="api.setCurrent(api.getLastPage())"
+            ><mat-icon id="setLastPage">last_page</mat-icon></a
+          >
+        </div>
       </pagination-template>
     </div>
     <ng-template #elsePagination></ng-template>

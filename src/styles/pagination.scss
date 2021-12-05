@@ -13,8 +13,27 @@
   justify-content: space-between;
   text-align: center;
 
+  .set-page,
+  .pagination-previus,
+  .pagination-next {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .disabled {
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
   .page-of-pages {
-    color:$opacityblack ;
+    color: $opacityblack;
+
+    &.darkmode {
+      color: $textw-darkMode;
+    }
+
     p {
       font: normal 450 14px/24px "Roboto";
     }

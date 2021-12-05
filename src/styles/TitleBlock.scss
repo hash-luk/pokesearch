@@ -11,7 +11,6 @@
     position: relative;
     width: 257px;
     height: 40px;
-    border: 1xp solid red;
   }
 
   #title__fcontent {
@@ -29,6 +28,11 @@
       padding: 8px 8px 8px;
       font: normal 450 14px/24px "Roboto";
       border-radius: 4px;
+      animation: inputWidth 0.4s ease;
+
+      &:focus {
+        border: 1px solid $orange;
+      }
     }
 
     mat-icon {
@@ -39,20 +43,77 @@
       width: 17.05px;
       height: 17.05px;
       color: $opacityblack;
+      animation: iconOpacity 0.3s ease-in;
+      animation-delay: 0.3s;
+      animation-fill-mode: both;
     }
   }
 
   h6 {
     font: normal 700 34px/44px "Roboto";
+    animation: textEntry 1s ease;
+    animation-fill-mode: both;
+
+    &.darkmode {
+      color: $text-darkMode;
+    }
   }
 
   p {
     font: normal 400 22px/44px "Roboto";
     width: 224px;
+    animation: pEntry 0.7s ease;
+    animation-fill-mode: both;
+
+    &.darkmode {
+      color: $textw-darkMode;
+    }
   }
 
   h6,
   p {
     color: $black;
+  }
+
+  @keyframes inputWidth {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 257px;
+    }
+  }
+
+  @keyframes iconOpacity {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes textEntry {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pEntry {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }

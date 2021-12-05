@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 24px 28px;
+  animation: opacity 0.3s ease;
+  animation-fill-mode: both;
 
   #user {
     width: 174px;
@@ -16,19 +18,78 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    animation: userEntry 1s ease;
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
   }
 
   p {
     font: normal 700 21px/44px "Roboto";
+
+    &:hover {
+      color: $orange;
+    }
   }
 
   img:first-child {
     width: 172.73px;
     height: 38px;
+    animation: logoDisplay 0.5s ease;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+    transition: all 0.1s ease-in-out;
   }
 
   img:last-child {
     width: 12px;
     height: 12px;
+
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(85%) sepia(25%)
+        saturate(6404%) hue-rotate(325deg) brightness(100%) contrast(103%);
+      cursor: pointer;
+    }
+  }
+
+  @keyframes opacity {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes userEntry {
+    0% {
+      opacity: 0%;
+      margin-top: 30px;
+    }
+    30% {
+      opacity: 50%;
+      margin-top: -30px;
+    }
+    60% {
+      opacity: 80%;
+      margin-top: 10px;
+    }
+    80% {
+      opacity: 90%;
+      margin-top: -10px;
+    }
+    100% {
+      opacity: 100%;
+      margin-top: 0;
+    }
+  }
+
+  @keyframes logoDisplay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

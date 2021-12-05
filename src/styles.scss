@@ -1,3 +1,5 @@
+@import './styles/variables.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +12,11 @@ body {
   -webkit-font-smoothing: antialiased !important;
   width: 100%;
   overflow-x: hidden;
+  background-color: $bg-body;
+
+  &.darkmode{
+    background-color: $bg-darkMode;
+  }
 }
 
 html, body { height: 100%; }

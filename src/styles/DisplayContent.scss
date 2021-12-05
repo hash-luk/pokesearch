@@ -9,6 +9,13 @@
     justify-content: left;
     border-bottom: 1px solid $border;
     margin-bottom: 18px;
+    animation: showContent 0.3s ease-in;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 1px 4px 10px -3px rgba(0, 0, 0, 0.8);
+    }
 
     #image {
       width: 98px;
@@ -26,11 +33,30 @@
     p:first-child {
       font: normal 700 16px/24px "Roboto";
       color: $black;
+
+      &.darkmode {
+        color: $textw-darkMode !important;
+      }
     }
 
     p:last-child {
       font: normal 500 14px/24px "Roboto";
       color: $innerborder;
+
+      &.darkmode {
+        color: $textw-darkMode !important;
+      }
+    }
+  }
+
+  @keyframes showContent {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      opacity: 1;
     }
   }
 }
