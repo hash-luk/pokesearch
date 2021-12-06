@@ -111,5 +111,5 @@ export class AppComponent implements OnInit {
     }
   }
 
-  title = 'advise';
+  title = 'PokeBusca';
 }
